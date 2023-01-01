@@ -1,15 +1,37 @@
+[![Angular Logo](https://www.vectorlogo.zone/logos/angular/angular-icon.svg)](https://angular.io/) [![Electron Logo](https://www.vectorlogo.zone/logos/electronjs/electronjs-icon.svg)](https://electronjs.org/)
 
+![Maintained][maintained-badge]
+[![Make a pull request][prs-badge]][prs]
+[![License][license-badge]](LICENSE.md)
 
-# ABOUT
+[![Linux Build][linux-build-badge]][linux-build]
+[![MacOS Build][macos-build-badge]][macos-build]
+[![Windows Build][windows-build-badge]][windows-build]
 
-mayiwen.
+[![Watch on GitHub][github-watch-badge]][github-watch]
+[![Star on GitHub][github-star-badge]][github-star]
+[![Tweet][twitter-badge]][twitter]
 
-version: 0.0.2
-## how to start
-npm run start
+# Introduction
 
-## how to build
-npm run 
+Bootstrap and package your project with Angular 14 and Electron 21 (Typescript + SASS + Hot Reload) for creating Desktop applications.
+
+Currently runs with:
+
+- Angular v14.2.6
+- Electron v21.1.1
+
+With this sample, you can:
+
+- Run your app in a local development environment with Electron & Hot reload
+- Run your app in a production environment
+- Package your app into an executable file for Linux, Windows & Mac
+
+/!\ Hot reload only pertains to the renderer process. The main electron process is not able to be hot reloaded, only restarted.
+
+/!\ Angular CLI & Electron Builder needs Node 14 or later to work correctly.
+
+## Getting Started
 
 *Clone this repository locally:*
 
