@@ -1,0 +1,11 @@
+<div style="display: flex; background-color: white; border-bottom: 1px solid #eee; -webkit-app-region: drag; position: fixed; left: 0px; top: 0px; width: 100%;;" [ngClass]="{height22px: isMax, height30px: !isMax}" [draggable]="true">
+  <div style="width: 100%;">
+    <img src="assets/icons/yiwei.png"  height="100%" style="vertical-align: top; -webkit-app-region: no-drag;" (click)="openF12();$event.stopPropagation()">
+    <div  style=" display: inline-block; width: calc(100% - 170px);" [ngClass]="{lh22: isMax, lh30: !isMax}">
+      <span style="margin-left: 10px;"> 马一文 mayiwen</span>
+    </div>
+  </div>
+</div>
+<div [ngClass]="{height22px: isMax, height30px: !isMax}"></div>
+
+

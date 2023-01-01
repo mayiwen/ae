@@ -48,3 +48,29 @@ html, body {
   }
 }
 
+.icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
+// 最大化的高度
+.height22px {
+  height: 22px;
+}
+// 窗口不是最大化的高度
+.height30px {
+  height: 30px;
+}
+::-webkit-scrollbar {
+  padding-top: 30px;
+  width: 8px;
+  height: 8px;
+  background-color: transparent;
+;
+}
+::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.349);
+  border-radius: 40px;
+}

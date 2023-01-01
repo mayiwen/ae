@@ -1,7 +1,7 @@
 import {app, BrowserWindow, screen} from 'electron';
 import * as path from 'path';
 import * as fs from 'fs';
-
+import { ipc } from './ipc';
 let win: BrowserWindow = null;
 const args = process.argv.slice(1),
   serve = args.some(val => val === '--serve');
@@ -14,12 +14,20 @@ function createWindow(): BrowserWindow {
   win = new BrowserWindow({
     x: 0,
     y: 0,
-    width: size.width,
-    height: size.height,
+    // width: size.width,
+    // height: size.height,
+    width: 800,
+    height: 600,
+    titleBarStyle: "hidden",
+    titleBarOverlay: {
+      color: "#fff",
+      symbolColor: "black",
+    },
     webPreferences: {
       nodeIntegration: true,
       allowRunningInsecureContent: (serve),
       contextIsolation: false,  // false if you want to run e2e test with Spectron
+      webviewTag: true
     },
   });
 
@@ -49,7 +57,7 @@ function createWindow(): BrowserWindow {
     // when you should delete the corresponding element.
     win = null;
   });
-
+  ipc(win)
   return win;
 }
 

@@ -1,0 +1,16 @@
+<div style="" class="table" [ngStyle]="{width: '700px'}" >
+  <div class="table-title table-title-background" [ngStyle]="{width: headWidth + 'px'}"  >
+    <span style="" *ngFor="let headItem of tableSetting.tableHead;" [ngStyle]="{width: headItem.w ? headItem.w + 'px' : '100px'}">{{headItem.v}}</span>
+  </div>
+  <div class="table-title" [ngStyle]="{width: headWidth + 'px'}" *ngFor="let item of data; let index = index"  >
+    <span style="" *ngFor="let headItem of tableSetting.tableHead;" [ngStyle]="{width: headItem.w ? headItem.w + 'px' : '100px'}">
+       <ng-container *ngIf="!headItem.type">{{ item[headItem.value]}}</ng-container>
+       <ng-container *ngIf="headItem.type">
+        <ng-container *ngTemplateOutlet="headerTemplate; context: { $implicit: item, item: item }"></ng-container>
+       </ng-container>
+    </span>
+  </div>
+</div>
+
+<ng-content [select]="'.hello0'"></ng-content>
+<ng-content [select]="'.hello1'"></ng-content>

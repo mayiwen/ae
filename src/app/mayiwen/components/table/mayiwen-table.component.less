@@ -1,0 +1,31 @@
+:host {
+  .table {
+    overflow: auto;
+    margin: 20px;
+  }
+  .table-title-background {
+    background-color: #eee;
+  }
+  .table-title {
+    overflow: auto;
+    span {
+      border: 1px solid #ccc; display: inline-block;
+      border: 1px solid #ccc; display: inline-block;
+      border-left: 0px solid #ccc;
+      height: 30px;
+      vertical-align: top;
+      padding: 0 5px;
+      box-sizing: border-box;
+      line-height: 29px;
+    }
+    span:first-of-type {
+      border: 1px solid #ccc; 
+    }
+    span:not(:first-child){
+      margin-left: -1px;
+    }
+    &:not(:first-child) {
+      margin-top: -1px;
+    }
+  }
+}

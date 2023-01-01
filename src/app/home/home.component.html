@@ -1,7 +1,54 @@
-<div class="container">
-  <h1 class="title">
-    {{ 'PAGES.HOME.TITLE' | translate }}
-  </h1>
-
-  <a routerLink="/detail">{{ 'PAGES.HOME.GO_TO_DETAIL' | translate }}</a>
+<div style="background-color: #f7f7f7" #navRef>
+  <div style="height: 40px"></div>
+  <div style="text-align: center">
+    <img src="assets/icons/nav/logo.png" alt="" width="200px" />
+  </div>
+  <div style="height: 30px"></div>
+  <div class="search">
+    <div class="w">
+      <form id="searchForm" style="max-width: 700px">
+        <select name="searchE" [(ngModel)]="searchE" id="search_select">
+          <option value="baidu">百度</option>
+          <option value="google">Google</option>
+          <option value="sogou">搜狗</option>
+          <option value="bing">必应</option>
+          <option value="360">360</option>
+          <option value="baiduImg">百度图片</option>
+        </select>
+        <input type="text" hidden />
+        <input
+          type="text"
+          [(ngModel)]="searchText"
+          name="searchText"
+          (keyup.enter)="search()"
+          placeholder="输入搜索内容"
+        />
+        <input type="button" value="搜索" (click)="search()" />
+      </form>
+    </div>
+  </div>
+  <div class="mayiwenNav" style="max-width: 1600px">
+    <ul class="myw_tab">
+      <li
+        [ngClass]="{ active: activeIndex === i }"
+        (click)="getLink(item.id); activeIndex = i"
+        *ngFor="let item of titleList; let i = index"
+      >
+        {{ item.title }}
+      </li>
+    </ul>
+    <div>
+      <ul class="myw_list">
+        <li
+          class="active"
+          *ngFor="let item of linkList; let i = index"
+          [ngStyle]="{ width: liWidthComputer }"
+        >
+          <a (click)="openOnBrowser(item.src)" target="_blank"
+            ><button [title]="item.title">{{ item.title }}</button></a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
 </div>

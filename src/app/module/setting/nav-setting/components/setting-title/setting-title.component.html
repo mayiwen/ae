@@ -1,0 +1,36 @@
+<!-- 头部的添加修改等操作 -->
+<div style="margin-top: 10px;">
+  <app-mayiwen-button [v]="'添加'" (click)="addBefore()"></app-mayiwen-button>
+</div>
+<!-- 表格数据 -->
+<app-mayiwen-table [data]="tableDate" [tableSetting]="tableSetting">
+  <ng-template #header let-item="item">
+    <a (click)="edit(item)">修改</a> |
+    <a (click)="delete(item)">删除</a>
+  </ng-template>
+</app-mayiwen-table>
+<!-- '这是添加或修改的' -->
+<app-mayiwen-modal *ngIf="modal" [v]="'标题操作 - ' + flagAddOrUpdate ? '添加' : '修改'" [w]="600" [h]="250" (close)="close()">
+  <section style="margin: 5px;">
+    <form [formGroup]="addOrEditForm">
+      <input type="text" formControlName="id"  placeholder="请输入id的内容">
+      <div style="margin-top: 10px;"></div>
+      <input type="text" placeholder="请删入标题的内容" formControlName="title">
+    </form>
+  </section>
+  <footer style="float: right; padding-top: 1px;">
+    <app-mayiwen-button [v]="'添加'" style="margin-right: 10px;" (click)="addItem()" *ngIf="flagAddOrUpdate"></app-mayiwen-button>
+    <app-mayiwen-button [v]="'修改'" style="margin-right: 10px;" (click)="editItem()" *ngIf="!flagAddOrUpdate"></app-mayiwen-button>
+    <app-mayiwen-button [v]="'返回'" style="margin-right: 10px;" (click)="close()"></app-mayiwen-button>
+  </footer>
+</app-mayiwen-modal>
+<app-mayiwen-modal *ngIf="modalDelete" [v]="'是否删除？'" [w]="200" [h]="100" (close)="modalDelete = false">
+  <section style="margin-left: 10px;">
+    {{deleteSave.id }}
+    {{deleteSave.title }}
+  </section>
+  <footer style="float: right; padding-top: 1px;">
+    <app-mayiwen-button [v]="'确定'" style="margin-right: 10px;" (click)="deleteClick()"></app-mayiwen-button>
+    <app-mayiwen-button [v]="'返回'" style="margin-right: 10px;" (click)="modalDelete = false"></app-mayiwen-button>
+  </footer>
+</app-mayiwen-modal>

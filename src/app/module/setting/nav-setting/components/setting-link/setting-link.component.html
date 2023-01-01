@@ -1,0 +1,43 @@
+<form action="" [formGroup]="addOrEditForm">
+  <app-mayiwen-select  [w]="100" (ngModelChange)="changeSelect($event)" name="selectObj" formControlName="selectObj">
+    <app-mayiwen-option  [value]="item.id" [v]="item.title" *ngFor="let item of tableDate;"></app-mayiwen-option>
+  </app-mayiwen-select>
+  <input type="text"   placeholder="输入标题" formControlName="title" name="title"   style="border: 1px solid red; height: 28px; width: 200px">
+  <input type="text"   placeholder="输入网址" formControlName="url" name="url"  style="border: 1px solid red; height: 28px; width: 200px">
+  <app-mayiwen-button v="添加" style="margin-left: 10px;" (click)="add()"></app-mayiwen-button>
+  <app-mayiwen-button v="重置" style="margin-left: 10px;" (click)="reset()"></app-mayiwen-button>
+</form>
+
+<!-- <div>
+  {{mjs.json(this.tableDate)}}
+</div>
+<app-mayiwen-table [data]="linkList" [tableSetting]="tableSetting">
+</app-mayiwen-table> -->
+<div style="width: 1200px; margin-top: 30px;">
+  <p *ngFor="let item of linkList; let index = index" style="border: 1px solid rgb(247, 219, 219); line-height: 30px; margin-top: -20px;" 
+  [draggable]="true" (dragstart)="dragStart(item, index)" (dragenter)="dragenter($event)"
+     (dragleave)="dragleave($event)" (dragover)="dragover($event)" (drop)="dropInner($event, item, index)">
+    <span style="width: 60px;display: inline-block;  vertical-align: middle;">
+      {{item.id}}
+    </span>
+    <span style="width: 430px;display: inline-block; overflow: hidden; vertical-align: middle">
+      {{item.title}}
+    </span>
+    <span style="width: 500px;display: inline-block; overflow: hidden; vertical-align: middle">
+      {{item.src}}
+    </span>
+    <span style="width: 100px;display: inline-block; overflow: hidden; vertical-align: middle" (click)="delete(item)">
+      删除
+    </span>
+  </p>
+</div>
+<app-mayiwen-modal *ngIf="modalDelete" [v]="'是否删除？'" [w]="200" [h]="100" (close)="modalDelete = false">
+  <section style="margin-left: 10px;">
+    {{deleteObj.id }}
+    {{deleteObj.title }}
+  </section>
+  <footer style="float: right; padding-top: 1px;">
+    <app-mayiwen-button [v]="'确定'" style="margin-right: 10px;" (click)="deleteClick()"></app-mayiwen-button>
+    <app-mayiwen-button [v]="'返回'" style="margin-right: 10px;" (click)="modalDelete = false"></app-mayiwen-button>
+  </footer>
+</app-mayiwen-modal>

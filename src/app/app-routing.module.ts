@@ -5,6 +5,7 @@ import { PageNotFoundComponent } from './shared/components';
 import { HomeRoutingModule } from './home/home-routing.module';
 import { DetailRoutingModule } from './detail/detail-routing.module';
 
+
 const routes: Routes = [
   {
     path: '',
@@ -12,9 +13,17 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
+    path: 'nav-setting',
+    loadChildren: () => import('./module/setting/nav-setting/nav-setting.module').then((x) => x.NavSettingModule)
+  },
+  {
+    path: 'desktop',
+    loadChildren: () => import('./module/desktop/desktop.module').then((x) => x.DesktopModule)
+  },
+  {
     path: '**',
     component: PageNotFoundComponent
-  }
+  },
 ];
 
 @NgModule({

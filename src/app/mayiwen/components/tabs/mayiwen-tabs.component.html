@@ -1,0 +1,2 @@
+<div class="title"><span *ngFor="let item of tabsetTitleList; let index = index" (click)="changeTab(index)" [ngClass]="{active: index === selectTab}">{{item.mywTitle}}</span></div>
+<ng-content select="app-mayiwen-tabset" #tabsetList ></ng-content>

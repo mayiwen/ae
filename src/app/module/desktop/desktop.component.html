@@ -1,0 +1,22 @@
+
+<div style="min-height: 100%; min-width: 100%;" (dragover)="dragDefault($event)" (drop)="containerDrop($event)">
+  <app-mayiwen-tabs>
+    <app-mayiwen-tabset [mywTitle]="tab.v" *ngFor="let tab of desktopArr ; let tabIndex = index" >
+      <div class="container-box"   #containerRef  >
+        <div class="img-box" *ngFor="let item of tab.children; let index = index" (contextmenu)="item.flagShowDelete = !item.flagShowDelete" (click)="openFile(item)" 
+          [draggable]="true" (dragstart)="dragStart(item, index, tabIndex)" (dragover)="dragDefault($event)" (drop)="linkDrop($event, item, index, tabIndex)">
+          <div class="img-box-top" [title]="item.value">
+            <img [src]="item.img" class="img-box-top-img"  ></div>
+          <div class="img-box-bottom">
+            {{item.v}}
+            <div class="img-box-bottom-button-div" *ngIf="item.flagShowDelete">
+              <app-mayiwen-button v="删除" [w]="80" class="img-box-bottom-button-button" (click)="deleteItem($event, item, tabIndex, index)"  ></app-mayiwen-button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </app-mayiwen-tabset>
+  </app-mayiwen-tabs>
+</div>
+
+

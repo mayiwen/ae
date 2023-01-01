@@ -1,0 +1,12 @@
+.app-left {
+  border-right: 1px solid #e4dede;
+  height: 100%;
+}
+.app-left a {
+  display: block;
+}
+.app-left a .left-item-icon {
+  font-size: 48px;
+  transform: scale(0.6);
+  color: black;
+}

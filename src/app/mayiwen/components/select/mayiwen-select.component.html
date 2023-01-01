@@ -1,0 +1,8 @@
+
+<span class="select">
+  <input type="text" style="border: 1px solid red; height: 24px; font-size: 20px; width: 140px;" [ngStyle]="{width: w + 'px'}" 
+    (click)="mayiwenSelectService.flagShow = true" [(ngModel)]="fatherNgModel.v">
+  <div class="select-show" *ngIf="mayiwenSelectService.flagShow" [ngStyle]="{width: width + 'px'}">
+    <ng-content select="app-mayiwen-option" ></ng-content>
+  </div>
+</span>

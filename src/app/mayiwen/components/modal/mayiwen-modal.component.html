@@ -1,0 +1,27 @@
+<div class="mask"></div>
+<div
+  class="content"
+  [ngStyle]="{
+    width: w ? w + 'px' : '500px',
+    height: h ? h + 'px' : '300px'
+  }"
+>
+  <header>
+    {{ v }}
+    <svg
+      class="icon"
+      aria-hidden="true"
+      style="float: right; font-size: 24px; line-height: 30px"
+      (click)="closeClick()"
+    >
+      <use xlink:href="#icon-close"></use>
+    </svg>
+  </header>
+  <div style="height: calc(100% - 70px)">
+    <ng-content select="section"></ng-content>
+  </div>
+
+  <div style="height: 40px; border-top: 1px solid #eee; width: 100%">
+    <ng-content select="footer"></ng-content>
+  </div>
+</div>
