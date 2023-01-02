@@ -16,5 +16,5 @@ npm run b
 *Clone this repository locally:*
 
 ``` bash
-git clone https://mayiwen.coding.net/public/ae/ae/git/files
+git clone https://github.com/maximegris/angular-electron.git
 ```
