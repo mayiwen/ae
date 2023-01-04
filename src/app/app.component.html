@@ -1,8 +1,7 @@
-<app-top></app-top>
-<div style="display: flex;" [ngClass]="{minus22px: isMax, minus30px: !isMax}" >
-  <app-left style="width: 40px;" ></app-left>
-  <div style="width: 100%; height: 100%; background-color: #f7f7f7">
+<div style="background-color: #f7f7f7; height: 100%; width: 100%">
+  <app-top></app-top>
+  <app-left></app-left>
+  <div [ngClass]="{minus22px: isMax, minus30px: !isMax}" style="overflow: scroll; margin-left: 40px;">
     <router-outlet ></router-outlet>
   </div>
 </div>
-

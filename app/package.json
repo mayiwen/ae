@@ -1,11 +1,11 @@
 {
-  "name": "angular-electron",
-  "description": "Angular Electron sample",
+  "name": "mayiwen",
+  "description": "mayiwen",
   "author": {
-    "name": "Maxime GRIS",
-    "email": "maxime.gris@gmail.com"
+    "name": "mayiwen",
+    "email": "i@mayiwen.com"
   },
-  "version": "11.2.0",
+  "version": "0.0.3",
   "main": "main.js",
   "private": true,
   "dependencies": {

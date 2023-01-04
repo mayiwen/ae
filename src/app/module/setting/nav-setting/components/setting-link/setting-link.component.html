@@ -14,7 +14,7 @@
 <app-mayiwen-table [data]="linkList" [tableSetting]="tableSetting">
 </app-mayiwen-table> -->
 <div style="width: 1200px; margin-top: 30px;">
-  <p *ngFor="let item of linkList; let index = index" style="border: 1px solid rgb(247, 219, 219); line-height: 30px; margin-top: -20px;" 
+  <p *ngFor="let item of linkList; let index = index" style="border: 1px solid rgb(247, 219, 219); line-height: 30px; margin-top: -20px; margin: -1px;" 
   [draggable]="true" (dragstart)="dragStart(item, index)" (dragenter)="dragenter($event)"
      (dragleave)="dragleave($event)" (dragover)="dragover($event)" (drop)="dropInner($event, item, index)">
     <span style="width: 60px;display: inline-block;  vertical-align: middle;">
