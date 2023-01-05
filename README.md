@@ -15,8 +15,7 @@ npm run b
 
 *Clone this repository locally:*
 
-## bash
-工程基于angular-electron，下面是原工程的地址。
+## base on
 https://github.com/maximegris/angular-electron.git
 ```
 
