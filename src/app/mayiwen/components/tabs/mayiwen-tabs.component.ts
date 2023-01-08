@@ -35,8 +35,6 @@ export class MayiwenTabsComponent implements OnInit, AfterViewInit {
     });
   }
   ngAfterViewInit() {
-    // console.log('这是tabs');
-    // console.log(this.tabsetList); //组件对象数组
     this.tabsetList.forEach((item, index) => {
       if (index === this.selectTab) {
         item.flagShow = true;
@@ -46,23 +44,14 @@ export class MayiwenTabsComponent implements OnInit, AfterViewInit {
       item.selectTab = index;
       item.nextTick();
     });
-    // this.tabsetList.forEach((item, index) => {
-    //   console.log(item);
-    //   console.log(index);
-    // });
-    // console.log(this.tabsetList); //组件对象数组
-    // console.log(this.tabsetList.toArray());
     this.tabsetList.forEach((item, index) => {
       this.tabsetTitleList.push({
         mywTitle: item.mywTitle,
         index,
       });
     });
-    // console.log(this.tabsetTitleList);
     this.cdr.detectChanges();
     this.cdr.markForCheck();
-    // this.tabsetTitle = this.tabsetList.
-  //  console.log(this.formList.toArray()[index] as any); //获取某个对象
   }
 
 }

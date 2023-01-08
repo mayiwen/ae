@@ -19,6 +19,7 @@ import { DesktopArrInterface } from './vo/link';
 export class DesktopComponent implements OnInit, AfterViewInit {
   selectTab = '1';
   arrtest: any[] = undefined;
+  wechat = 'C:\\Program Files (x86)\\Tencent\\WeChat\\WeChat.exe';
   desktopArr: DesktopArrInterface[] = [
     // {
     //   v: '默认',
@@ -50,7 +51,17 @@ export class DesktopComponent implements OnInit, AfterViewInit {
         children: []
       }];
     }
+    this.desktopArr[0].children.push({
+      v: '微信',
+      value: 'C:\\Users\\myw\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\System Tools\\控制面板\\',
+      img: '111',
+      type: 'm',
+      flagShowDelete: false,
+    })
     this.getIcon();
+    const data = this.es.fs.readFileSync(this.wechat, 'base64');
+    console.log('这是打印的wechat');
+    console.log(data);
   }
   getIcon() {
     this.desktopArr.forEach((tab) => {

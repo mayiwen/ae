@@ -1,4 +1,4 @@
-import { app, BrowserWindow, ipcMain, ipcRenderer, shell } from 'electron';
+import { app, BrowserWindow, ipcMain, ipcRenderer, shell, globalShortcut } from 'electron';
 export function ipc(win: any) {
   ipcMain.handle('PING', () => 'PONG');
 	// 窗口最小化
@@ -17,35 +17,48 @@ export function ipc(win: any) {
     app.exit();
   });
   ipcMain.on('f12', () => {
-    console.log('this is app')
     win.webContents.openDevTools({ mode: 'detach' });
   });
   ipcMain.on('imgIcon', async (event: any, params) => {
-    console.log('这是app getFileIcon')
-    if (params.value.includes('.lnk')) {
-      console.log('进入了1')
-      let lnk = shell.readShortcutLink(params.value);
-      console.log('这是ink-------------------------')
-      console.log(lnk);
-      let data = await app.getFileIcon(lnk.target + '', {size: 'large'})
-      console.log(data)
-      console.log(data.toDataURL())
+    
+    try {
+      if (params.value.includes('.lnk')) {
+        let lnk = shell.readShortcutLink(params.value);
+        let data = await app.getFileIcon(lnk.target + '', {size: 'large'})
+        event.returnValue = data.toDataURL();
+        return data.toDataURL();
+      }
+      const data = await app.getFileIcon(params.value, {size: 'large'})
       event.returnValue = data.toDataURL();
       return data.toDataURL();
+    } catch (error) {
+      event.returnValue = '';
+      return ''
     }
-    const data = await app.getFileIcon(params.value, {size: 'large'})
-    event.returnValue = data.toDataURL();
-    return data.toDataURL();
   });
+
+  app.whenReady().then(() => {
+    // 注册一个'CommandOrControl+X' 快捷键监听器
+    const ret = globalShortcut.register('CommandOrControl+q', () => {
+      console.log('CommandOrControl+q is pressed')
+      shell.openPath('C:\\Program Files\\Microsoft VS Code\\code.exe');
+      
+    })
+  
+    if (!ret) {
+      console.log('registration failed')
+    }
+  
+    // 检查快捷键是否注册成功
+    console.log(globalShortcut.isRegistered('CommandOrControl+q'))
+  })
 
 
 
 
   win.on('maximize', () => {
     try {
-      console.log(ipcRenderer)
       win.webContents.send('main', 'maximize!')
-      console.log('调用了最大化的方法')
     } catch (error) {
       console.log(error)
     }
@@ -53,23 +66,9 @@ export function ipc(win: any) {
   })
   win.on('unmaximize', () => {
     try {
-      console.log(ipcRenderer)
       win.webContents.send('main', 'unmaximize!')
-      console.log('调用了最大化的方法')
     } catch (error) {
       console.log(error)
     }
   })
-  // win.on('imgIcon', (data) => {
-  //   try {
-  //     console.log(ipcRenderer)
-  //     win.webContents.send('main', 'unmaximize!')
-  //     console.log('调用了最大化的方法')
-  //   } catch (error) {
-  //     console.log(error)
-  //   }
-  // })
-
-
-  
 }

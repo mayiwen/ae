@@ -30,31 +30,40 @@ function ipc(win) {
         electron_1.app.exit();
     });
     electron_1.ipcMain.on('f12', () => {
-        console.log('this is app');
         win.webContents.openDevTools({ mode: 'detach' });
     });
     electron_1.ipcMain.on('imgIcon', (event, params) => __awaiter(this, void 0, void 0, function* () {
-        console.log('这是app getFileIcon');
-        if (params.value.includes('.lnk')) {
-            console.log('进入了1');
-            let lnk = electron_1.shell.readShortcutLink(params.value);
-            console.log('这是ink-------------------------');
-            console.log(lnk);
-            let data = yield electron_1.app.getFileIcon(lnk.target + '', { size: 'large' });
-            console.log(data);
-            console.log(data.toDataURL());
+        try {
+            if (params.value.includes('.lnk')) {
+                let lnk = electron_1.shell.readShortcutLink(params.value);
+                let data = yield electron_1.app.getFileIcon(lnk.target + '', { size: 'large' });
+                event.returnValue = data.toDataURL();
+                return data.toDataURL();
+            }
+            const data = yield electron_1.app.getFileIcon(params.value, { size: 'large' });
             event.returnValue = data.toDataURL();
             return data.toDataURL();
         }
-        const data = yield electron_1.app.getFileIcon(params.value, { size: 'large' });
-        event.returnValue = data.toDataURL();
-        return data.toDataURL();
+        catch (error) {
+            event.returnValue = '';
+            return '';
+        }
     }));
+    electron_1.app.whenReady().then(() => {
+        // 注册一个'CommandOrControl+X' 快捷键监听器
+        const ret = electron_1.globalShortcut.register('CommandOrControl+q', () => {
+            console.log('CommandOrControl+q is pressed');
+            electron_1.shell.openPath('C:\\Program Files\\Microsoft VS Code\\code.exe');
+        });
+        if (!ret) {
+            console.log('registration failed');
+        }
+        // 检查快捷键是否注册成功
+        console.log(electron_1.globalShortcut.isRegistered('CommandOrControl+q'));
+    });
     win.on('maximize', () => {
         try {
-            console.log(electron_1.ipcRenderer);
             win.webContents.send('main', 'maximize!');
-            console.log('调用了最大化的方法');
         }
         catch (error) {
             console.log(error);
@@ -62,23 +71,12 @@ function ipc(win) {
     });
     win.on('unmaximize', () => {
         try {
-            console.log(electron_1.ipcRenderer);
             win.webContents.send('main', 'unmaximize!');
-            console.log('调用了最大化的方法');
         }
         catch (error) {
             console.log(error);
         }
     });
-    // win.on('imgIcon', (data) => {
-    //   try {
-    //     console.log(ipcRenderer)
-    //     win.webContents.send('main', 'unmaximize!')
-    //     console.log('调用了最大化的方法')
-    //   } catch (error) {
-    //     console.log(error)
-    //   }
-    // })
 }
 exports.ipc = ipc;
 //# sourceMappingURL=ipc.js.map
