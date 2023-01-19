@@ -12,10 +12,9 @@ function createWindow(): BrowserWindow {
 
   // Create the browser window.
   win = new BrowserWindow({
-    x: 0,
-    y: 0,
-    // width: size.width,
-    // height: size.height,
+    x: (size.width - 800) / 2,
+    
+    y: (size.height - 600) / 2,
     width: 800,
     height: 600,
     titleBarStyle: "hidden",
