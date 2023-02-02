@@ -5,9 +5,6 @@ import {
   forwardRef,
   Input,
   OnInit,
-  QueryList,
-  ViewChild,
-  ViewChildren,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { MayiwenSelectService } from './mayiwen-select.service';

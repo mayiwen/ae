@@ -42,17 +42,18 @@ export class SettingTitleComponent implements OnInit, AfterViewInit {
         w: 100,
       },
       {
+        value: 'edit',
+        v: '操作',
+        w: 100,
+        type: 'content',
+        typeKey: '.hello',
+      },
+      {
         value: 'title',
         v: '标题',
         w: 200,
       },
-      {
-        value: 'edit',
-        v: '操作',
-        w: 300,
-        type: 'content',
-        typeKey: '.hello',
-      },
+      
     ],
   };
   addOrEditForm = this.fb.group({
