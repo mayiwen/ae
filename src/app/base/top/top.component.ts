@@ -1,7 +1,7 @@
 import { AfterViewInit, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
 import { ElectronService, MainWindowService } from '../../core/services';
-
+const packageJson = require('../../../../package.json');
 @Component({
   selector: 'app-top',
   templateUrl: './top.component.html',
@@ -9,12 +9,15 @@ import { ElectronService, MainWindowService } from '../../core/services';
 })
 export class TopComponent implements OnInit, AfterViewInit, OnDestroy {
   isMax = false;
+  version = ''; // 设置当前的版本
   private $destroy = new Subject();
   constructor(private electron: ElectronService, private mainWindowService:  MainWindowService, private cdr: ChangeDetectorRef,) { }
-
   ngOnInit(): void {
   }
   ngAfterViewInit(): void {
+    console.log('这是package.json');
+    console.log(packageJson);
+    this.version = packageJson.version.replaceAll('"', '');
     this.mainWindowService.isMaxSubject.pipe(takeUntil(this.$destroy)).subscribe({
       next: (flag) => {
         this.isMax = flag;

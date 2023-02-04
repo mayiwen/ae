@@ -10,13 +10,15 @@ import { SettingLinkComponent } from './components/setting-link/setting-link.com
 import { MayiwenModule } from '../../../mayiwen/mayiwen.module';
 import { Test1000Component } from './components/test1000/setting-title/test1000.component';
 import { AppCardComponent } from './components/test1000/app-card/app-card.component';
+import { AboutComponent } from './components/about/about.component';
 @NgModule({
   declarations: [
     NavSettingComponent,
     SettingTitleComponent,
     SettingLinkComponent,
     Test1000Component,
-    AppCardComponent
+    AppCardComponent,
+    AboutComponent
   ],
   imports: [
     CommonModule,

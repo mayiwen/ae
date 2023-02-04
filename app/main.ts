@@ -84,6 +84,25 @@ try {
     }
   });
 
+  // 使用单实例
+  const gotTheLock = app.requestSingleInstanceLock()
+  if (!gotTheLock) {
+    app.quit()
+  } {
+    app.on('second-instance', (event, argv) => {
+      if (process.platform === 'win32') {
+        if (win) {
+          if (win.isMinimized()) {
+            win.restore()
+          }
+          if (win.isVisible()) {
+            win.focus()
+          } else {
+            win.show()
+          }
+      }}
+    })
+  }
 } catch (e) {
   // Catch Error
   // throw e;
