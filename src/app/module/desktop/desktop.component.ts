@@ -37,12 +37,13 @@ export class DesktopComponent implements OnInit, AfterViewInit {
   /** 选中的下标 */
   selectIndex = 0;
   dragStartSaveObj = {} as any;
-  constructor(private es: ElectronService, private localStorage: LocalStorage,) {}
+  constructor(private es: ElectronService, private localStorage: LocalStorage, private cdr: ChangeDetectorRef) {}
   ngAfterViewInit(): void {
     // throw new Error('Method not implemented.');
   }
   async ngOnInit() {
     this.desktopArr = this.localStorage.getObject('desktopArr');
+    this.showDeleteFalse();
     console.log('这是desktopArr');
     console.log(this.desktopArr);
     if (!this.desktopArr || this.desktopArr.length === 0) {
@@ -104,7 +105,6 @@ export class DesktopComponent implements OnInit, AfterViewInit {
         img: '',
         type: 's',
         flagShowDelete: false
-
       });
     });
     this.getIcon();
@@ -128,9 +128,32 @@ export class DesktopComponent implements OnInit, AfterViewInit {
   openFile(item) {
     this.es.shell.openPath(item.value);
   }
-
+  /** 数值变化后，修改local storage */
   localStorageSet() {
     this.localStorage.setObject('desktopArr', this.desktopArr);
+  }
+
+  /** 当点击删除的时候，会把别的显示的删除的图标清除 */
+  showDeleteFalse() {
+    this.desktopArr.forEach((tabItemLoop, tabIndexLoop) => {
+      tabItemLoop.children.forEach((itemLoop, itemIndexLoop) => {
+          itemLoop.flagShowDelete = false;
+      })
+    })
+    this.localStorageSet();
+  }
+  /** 当点击删除的时候，会把别的显示的删除的图标清除 */
+  deleteButtonShowOrHidden(item, tabIndex, index) {
+    this.desktopArr.forEach((tabItemLoop, tabIndexLoop) => {
+      tabItemLoop.children.forEach((itemLoop, itemIndexLoop) => {
+        if (tabIndexLoop === tabIndex && itemIndexLoop === index) {
+          itemLoop.flagShowDelete = !itemLoop.flagShowDelete
+        } else {
+          itemLoop.flagShowDelete = false;
+        }
+      })
+    })
+    this.localStorageSet();
   }
 
   dragStart(item, index, tabIndex){

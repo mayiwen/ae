@@ -3,7 +3,7 @@
   <app-mayiwen-tabs>
     <app-mayiwen-tabset [mywTitle]="tab.v" *ngFor="let tab of desktopArr ; let tabIndex = index" >
       <div class="container-box"   #containerRef  >
-        <div class="img-box" *ngFor="let item of tab.children; let index = index" (contextmenu)="item.flagShowDelete = !item.flagShowDelete" (click)="openFile(item)" 
+        <div class="img-box" *ngFor="let item of tab.children; let index = index" (contextmenu)="deleteButtonShowOrHidden(item, tabIndex, index)" (click)="openFile(item)" 
           [draggable]="true" (dragstart)="dragStart(item, index, tabIndex)" (dragover)="dragDefault($event)" (drop)="linkDrop($event, item, index, tabIndex)">
           <div class="img-box-top" [title]="item.value">
             <img [src]="item.img" class="img-box-top-img"  ></div>

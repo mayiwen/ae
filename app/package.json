@@ -5,7 +5,7 @@
     "name": "mayiwen",
     "email": "i@mayiwen.com"
   },
-  "version": "0.0.12",
+  "version": "0.0.13",
   "main": "main.js",
   "private": true,
   "dependencies": {
