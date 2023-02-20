@@ -21,6 +21,10 @@ const routes: Routes = [
     loadChildren: () => import('./module/desktop/desktop.module').then((x) => x.DesktopModule)
   },
   {
+    path: 'mind-map',
+    loadChildren: () => import('./module/mind-map/mind-map.module').then((x) => x.MindMapModule)
+  },
+  {
     path: '**',
     component: PageNotFoundComponent
   },
