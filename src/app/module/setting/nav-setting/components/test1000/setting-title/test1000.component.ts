@@ -25,17 +25,13 @@ export class Test1000Component implements AfterViewInit {
     console.log('这是打印的canvas');
     console.log(this.canvas.nativeElement);
     const canvas = this.canvas.nativeElement as any;
+    canvas.style.height = 400;
+    canvas.style.width = 400;
     const ctx = canvas.getContext('2d');
     ctx.moveTo(0,0);
-    ctx.lineTo(400,200);
-    ctx.moveTo(0,200);
-    ctx.lineTo(200,200);
-    ctx.moveTo(0,400);
-    ctx.lineTo(300,300);
-    ctx.moveTo(0,0);
-    ctx.lineTo(400,400);
+    ctx.lineTo(30,30);
+    ctx.moveTo(30,0);
+    ctx.lineTo(0,30);
     ctx.stroke();
   }
-  
-
 }
