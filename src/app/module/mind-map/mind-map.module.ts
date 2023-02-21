@@ -5,6 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MindMapComponent } from './mind-map.component';
 import { MindMapRoutingModule } from './mind-map-routing.module';
 import { WangEditorComponent } from './editor/wangeditor/wangeditor.component';
+import { MayiwenModule } from '../../mayiwen/mayiwen.module';
 @NgModule({
   declarations: [
     MindMapComponent,
@@ -15,6 +16,7 @@ import { WangEditorComponent } from './editor/wangeditor/wangeditor.component';
     FormsModule,
     ReactiveFormsModule,
     MindMapRoutingModule,
+    MayiwenModule
   ],
   bootstrap: [
     MindMapComponent

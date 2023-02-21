@@ -10,6 +10,7 @@ import { MayiwenOptionComponent } from './components/select/option/mayiwen-optio
 import { MayiwenTableComponent } from './components/table/mayiwen-table.component';
 import { MayiwenModalComponent } from './components/modal/mayiwen-modal.component';
 import { MayiwenButtonComponent } from './components/button/mayiwen-button.component';
+import { MayiwenTreeMapComponent } from './components/tree/map/tree-map.component';
 import { MayiwenJsonService } from './util/json/json';
 
 const components = [
@@ -19,7 +20,8 @@ const components = [
   MayiwenOptionComponent,
   MayiwenTableComponent,
   MayiwenModalComponent,
-  MayiwenButtonComponent
+  MayiwenButtonComponent,
+  MayiwenTreeMapComponent
 ];
 @NgModule({
   declarations: [
