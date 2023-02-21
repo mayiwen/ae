@@ -1,0 +1,6 @@
+
+<div style="margin-top: 3px;" [ngStyle]="{marginLeft: data.level * 10 + 'px'}">
+    <span style="display: inline-block; background-color: antiquewhite; width: 300px; font-size: 15px; height: 25px; line-height: 25px;">{{data.v }} {{data.level}} </span>
+    <span *ngIf="data.children && data.children.length > 0;" (click)="data.flagExpand = !data.flagExpand">展开</span>
+    <span *ngIf="!(data.children && data.children.length > 0);">不展</span>
+</div>

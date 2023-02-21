@@ -1,7 +1,6 @@
-
-<ng-container *ngIf="data.children && data.children.length > 0">
+<ng-content></ng-content>
+<ng-container *ngIf="data.children && data.children.length > 0  && data.flagExpand">
     <app-mayiwen-tree-map-loop *ngFor="let itemi of data.children;" [data]="itemi">
         <app-mayiwen-tree-map-line [data]="itemi"></app-mayiwen-tree-map-line>
     </app-mayiwen-tree-map-loop>
 </ng-container>
-{{data | json}}

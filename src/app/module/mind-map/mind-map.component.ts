@@ -6,7 +6,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { MindMapService } from './mind-map.service';
-import { TreeItem } from './o/tree.o';
+import { TreeItem } from '../../mayiwen/components/tree/o/tree.o';
 @Component({
   selector: 'app-mind-map',
   templateUrl: './mind-map.component.html',
@@ -30,8 +30,22 @@ export class MindMapComponent implements OnInit, AfterViewInit {
           children: [
             {
               v: '211',
+              value: '211',
+            },
+            {
+              v: '212',
               value: '212',
-            }
+              children: [
+                {
+                  v: '2121',
+                  value: '2121',
+                },
+                {
+                  v: '2122',
+                  value: '2122',
+                },
+              ]
+            },
           ]
         }
       ]
