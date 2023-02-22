@@ -1,5 +1,6 @@
 import { AfterViewInit, ChangeDetectorRef, Component, Input, OnInit, ViewChild } from '@angular/core';
 import { TreeItem } from '../../../o/tree.o';
+import { MayiwenTreeMapService } from '../../service/tree-map.service';
 @Component({
   selector: 'app-mayiwen-tree-map-line',
   templateUrl: './tree-map-line.component.html',
@@ -9,10 +10,20 @@ import { TreeItem } from '../../../o/tree.o';
 export class MayiwenTreeMapLineComponent implements OnInit, AfterViewInit {
   @Input() data: TreeItem;
   selectTab = '1';
+  constructor(private mayiwenTreeMapService: MayiwenTreeMapService) {
+
+  }
   ngAfterViewInit(): void {
     // throw new Error('Method not implemented.');
   }
   ngOnInit(): void {
     // throw new Error('Method not implemented.');
+  }
+  right(item) {
+    console.log('这是子元素的方法。')
+    this.mayiwenTreeMapService.arrowSubject.next({
+      type: 'right',
+      data: item
+    })
   }
 }

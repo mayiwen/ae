@@ -14,6 +14,7 @@ import { MayiwenTreeMapComponent } from './components/tree/map/tree-map.componen
 import { MayiwenTreeMapLoopComponent } from './components/tree/map/component/loop/tree-map-loop.component'
 import { MayiwenTreeMapLineComponent } from './components/tree/map/component/line/tree-map-line.component'
 import { MayiwenJsonService } from './util/json/json';
+import { MayiwenTreeMapService } from './components/tree/map/service/tree-map.service'
 
 const components = [
   MayiwenTabsComponent,
@@ -41,6 +42,6 @@ const components = [
   ],
   bootstrap: [
   ],
-  providers: [MayiwenService, MayiwenJsonService],
+  providers: [MayiwenService, MayiwenJsonService, MayiwenTreeMapService],
 })
 export class MayiwenModule { }
