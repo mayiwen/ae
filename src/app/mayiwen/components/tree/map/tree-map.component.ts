@@ -32,6 +32,9 @@ export class MayiwenTreeMapComponent implements OnInit, AfterViewInit, OnDestroy
       if (data.type === 'right') {
         this.dataLoopAddChild(this._data, data.data);
       }
+      if (data.type === 'left') {
+        this.dataLoopAddFather(this._data, data.data);
+      }
 
     })
   }
@@ -89,6 +92,42 @@ export class MayiwenTreeMapComponent implements OnInit, AfterViewInit, OnDestroy
       })
     }
   }
+  dataLoopAddFather(data, lockData: TreeItem) {
+    console.log('这是打印的')
+    console.log(data)
+    console.log(lockData)
+    let location = lockData.treeId.split('-')
+    console.log(location)
+    let temp = {...data}
+    for (let index = 0; index <= location.length - 1; index++) {
+      let a = +location[index]
+      temp = temp.children[a]
+    }
+    console.log('这是temp')
+    console.log(temp)
+    let tempCopy = {...temp}
+    let b: TreeItem = {
+      level: tempCopy.level ,
+      v: 'default',
+      value: 'default',
+      treeId: tempCopy.treeId,
+      flagExpand: true
+    }
+    b.children = []
+    b.children.push({...tempCopy, treeId: tempCopy.treeId + '-' + 1 })
+    console.log(temp)
+    console.log(data)
+    temp = b
+    // temp.children = 
+    
+    // location.forEach(item => {
+    //   temp = data.children[item]
+    // })
+    
+  }
+
+  
+  
   
 
   selectTab = '1';

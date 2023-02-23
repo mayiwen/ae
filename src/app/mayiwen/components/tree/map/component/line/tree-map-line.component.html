@@ -1,10 +1,10 @@
 
-<div style="padding: 3px;" [ngStyle]="{marginLeft: data.level * 10 + 'px'}">
+<div style="padding: 3px; border: 1px solid red; width: 700px;" [ngStyle]="{marginLeft: data.level * 10 + 'px'}" >
     <span style="display: inline-block; background-color: antiquewhite; width: 300px; font-size: 15px; height: 25px; line-height: 25px;">{{data.v }} {{data.level}} {{data.treeId}} </span>
     <span *ngIf="data.children && data.children.length > 0;" (click)="data.flagExpand = !data.flagExpand">展开</span>
     <span *ngIf="!(data.children && data.children.length > 0);">不展</span>|
-    <span (click)="right(data)">子元素</span> |
+    <span (click)="arrow(data, 'right')">子元素</span> |
     <span>兄元素</span> |
     <span>弟元素</span> |
-    <span>父元素</span> |
+    <span (click)="arrow(data, 'left')">父元素</span> |
 </div>

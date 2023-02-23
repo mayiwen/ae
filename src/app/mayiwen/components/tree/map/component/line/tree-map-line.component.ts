@@ -19,11 +19,12 @@ export class MayiwenTreeMapLineComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     // throw new Error('Method not implemented.');
   }
-  right(item) {
+  arrow(item, type: string) {
     console.log('这是子元素的方法。')
     this.mayiwenTreeMapService.arrowSubject.next({
-      type: 'right',
+      type: type,
       data: item
     })
   }
+  
 }
