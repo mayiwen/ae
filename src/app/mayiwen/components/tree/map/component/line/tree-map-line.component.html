@@ -1,6 +1,10 @@
 
-<div style="padding: 3px; border: 1px solid red; width: 700px;" [ngStyle]="{marginLeft: data.level * 10 + 'px'}" >
-    <span style="display: inline-block; background-color: antiquewhite; width: 300px; font-size: 15px; height: 25px; line-height: 25px;">{{data.v }} {{data.level}} {{data.treeId}} </span>
+<div style="padding: 3px; border: 1px solid #ccc; width: 700px;" [ngStyle]="{marginLeft: data.level * 10 + 'px'}" >
+    <span style="display: inline-block; background-color: antiquewhite; width: 300px; font-size: 15px; height: 25px; line-height: 25px;">
+        <input type="你好" [(ngModel)]="data.v" style="height: 25px;">
+        {{data.level}} {{data.treeId}} 
+        
+    </span>
     <span *ngIf="data.children && data.children.length > 0;" (click)="data.flagExpand = !data.flagExpand">展开</span>
     <span *ngIf="!(data.children && data.children.length > 0);">不展</span>|
     <span (click)="arrow(data, 'right')">子元素</span> |

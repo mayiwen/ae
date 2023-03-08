@@ -10,10 +10,9 @@ import { MayiwenTreeMapService } from './service/tree-map.service';
   providers: []
 })
 export class MayiwenTreeMapComponent implements OnInit, AfterViewInit, OnDestroy {
-  // @Input() data: TreeItem[];
   private $destorySubject = new Subject()
   private _data = {}
-  @Input() set data(data: TreeItem) {
+  @Input() set data(data: any) {
     console.log('这是打印的data')
     console.log(data)
     console.log(data)
@@ -118,12 +117,6 @@ export class MayiwenTreeMapComponent implements OnInit, AfterViewInit, OnDestroy
     console.log(temp)
     console.log(data)
     temp = b
-    // temp.children = 
-    
-    // location.forEach(item => {
-    //   temp = data.children[item]
-    // })
-    
   }
 
   
